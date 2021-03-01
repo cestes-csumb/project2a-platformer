@@ -15,6 +15,10 @@ public class LevelParserStarter : MonoBehaviour
 
     public GameObject Stone;
 
+    public GameObject Water;
+
+    public GameObject Goal;
+
     public Transform parentTransform;
     // Start is called before the first frame update
     void Start()
@@ -56,13 +60,15 @@ public class LevelParserStarter : MonoBehaviour
     private void SpawnPrefab(char spot, Vector3 positionToSpawn)
     {
         GameObject ToSpawn;
-
+        //there are 2 new cases, our water object and the goal object
         switch (spot)
         {
             case 'b': ToSpawn=Brick; break;
             case '?': ToSpawn=QuestionBox; break;
             case 'x': ToSpawn=Stone; break;
             case 's': ToSpawn=Rock; break;
+            case 'w': ToSpawn=Water; break;
+            case 'g': ToSpawn=Goal; break;
             //default: Debug.Log("Default Entered"); break;
             default: return;
                 //ToSpawn = //Brick;       break;

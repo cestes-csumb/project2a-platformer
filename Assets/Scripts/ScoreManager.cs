@@ -19,7 +19,7 @@ public class ScoreManager : MonoBehaviour
     void Update()
     {
           currentScore.SetText(score.ToString());
-          currentCoins.SetText("x" + coins.ToString());
+          currentCoins.SetText("x " + coins.ToString());
     }
 
      public void UpdateScore(int points) {

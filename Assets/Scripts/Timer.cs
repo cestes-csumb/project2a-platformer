@@ -18,18 +18,39 @@ public class Timer : MonoBehaviour
      // Update is called once per frame
      void Update()
      {
+          
           //tick time down
           timerValue -= Time.deltaTime;
-          //truncate float value to just the whole number (if necessary)
-          if (timerValue.ToString().Length > 3)
+          //if we run out of time update the timer to display game over
+          if (timerValue <= 0)
           {
-               truncatedTime = timerValue.ToString().Remove(3);
+               timer.text = "Game Over!";
           }
           else {
-               truncatedTime = timerValue.ToString();
+               //truncate float value to just the whole number (if necessary)
+               if (timerValue.ToString().Length > 3 || timerValue < 100)
+               {
+                    truncatedTime = timerValue.ToString().Remove(3);
+               }
+               //there is now additional truncation code to account for 2 digit values and 1 digit values
+               if (timerValue < 100)
+               {
+                    if (timerValue < 10)
+                    {
+                         truncatedTime = timerValue.ToString().Remove(1);
+                    }
+                    else {
+                         truncatedTime = timerValue.ToString().Remove(2);
+                    }
+
+               }
+               else
+               {
+                    truncatedTime = timerValue.ToString();
+               }
+               //update display
+               timer.text = truncatedTime;
           }
-          //update display
-          timer.text = truncatedTime;
     }
 
 }
